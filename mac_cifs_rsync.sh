@@ -224,6 +224,14 @@ fi
 ##/ file caching
 ls -all "$mountpoint" > /dev/null 2>&1
 
+##/ rsync
+echo "" # dummy
+echo "---> starting: RSYNC in 5 seconds..."
+echo "" # dummy
+(sleep 5) & spinner $!
+##/ RUN
+/usr/local/bin/rsync -rltD --progress --no-perms --no-owner --no-group --update --delete "$source"/ "$mountpoint"/
+
 ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ###
