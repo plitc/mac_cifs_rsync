@@ -230,7 +230,8 @@ echo "---> starting: RSYNC in 5 seconds..."
 echo "" # dummy
 (sleep 5) & spinner $!
 ##/ RUN
-/usr/local/bin/rsync -rltD --progress --no-perms --no-owner --no-group --update --delete "$source"/ "$mountpoint"/
+#/ /usr/local/bin/rsync -rltD --progress --no-perms --no-owner --no-group --update --delete "$source"/ "$mountpoint"/
+/usr/local/bin/rsync -rltD --no-perms --no-owner --no-group --update --delete "$source"/ "$mountpoint"/
 
 ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ###
