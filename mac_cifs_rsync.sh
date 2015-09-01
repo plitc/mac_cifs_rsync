@@ -206,6 +206,21 @@ then
    exit 1
 fi
 
+##/ umount mountpoint
+umount "$mountpoint"
+
+##/ mount
+mount -t smbfs //"$user":"$password"@"$ip"/"$path" "$/mountpoint"
+if [ $? -eq 0 ]
+then
+   : # dummy
+else
+   echo "" # dummy
+   echo "[ERROR] can't mount"
+   echo "" # dummy
+   exit 1
+fi
+
 ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ###
