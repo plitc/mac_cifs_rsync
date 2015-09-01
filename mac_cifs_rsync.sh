@@ -124,14 +124,14 @@ fi
 ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ###
 
-while getopts ":s:i:p:m:u:w:" opt; do
+while getopts ":s:i:r:m:u:p:" opt; do
   case "$opt" in
     s) source=$OPTARG ;;
     i) ip=$OPTARG ;;
-    p) path=$OPTARG ;;
+    r) remote=$OPTARG ;;
     m) mountpoint=$OPTARG ;;
     u) user=$OPTARG ;;
-    w) password=$OPTARG ;;
+    p) password=$OPTARG ;;
   esac
 done
 shift $(( OPTIND - 1 ))
@@ -140,8 +140,8 @@ shift $(( OPTIND - 1 ))
 if [ -z "$source" ]
 then
    echo "" # dummy
-   echo "usage:   ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -p {remote path} -m {local mountpoint} -u {user} -pw {password}"
-   echo "example: -s /Users -i 192.168.1.1 -p storage/rpool -m /freenas -u root -pw 123"
+   echo "usage:   ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -r {remote path} -m {local mountpoint} -u {user} -p {password}"
+   echo "example: -s /Users -i 192.168.1.1 -r storage/rpool -m /freenas -u root -p 123"
    echo "" # dummy
    exit 1
 fi
@@ -150,18 +150,18 @@ fi
 if [ -z "$ip" ]
 then
    echo "" # dummy
-   echo "usage:   ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -p {remote path} -m {local mountpoint} -u {user} -pw {password}"
-   echo "example: -s /Users -i 192.168.1.1 -p storage/rpool -m /freenas -u root -pw 123"
+   echo "usage:   ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -r {remote path} -m {local mountpoint} -u {user} -p {password}"
+   echo "example: -s /Users -i 192.168.1.1 -r storage/rpool -m /freenas -u root -p 123"
    echo "" # dummy
    exit 1
 fi
 
-##/ check path - empty argument
-if [ -z "$path" ]
+##/ check remote - empty argument
+if [ -z "$remote" ]
 then
    echo "" # dummy
-   echo "usage:   ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -p {remote path} -m {local mountpoint} -u {user} -pw {password}"
-   echo "example: -s /Users -i 192.168.1.1 -p storage/rpool -m /freenas -u root -pw 123"
+   echo "usage:   ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -r {remote path} -m {local mountpoint} -u {user} -p {password}"
+   echo "example: -s /Users -i 192.168.1.1 -r storage/rpool -m /freenas -u root -p 123"
    echo "" # dummy
    exit 1
 fi
@@ -170,8 +170,8 @@ fi
 if [ -z "$mountpoint" ]
 then
    echo "" # dummy
-   echo "usage:   ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -p {remote path} -m {local mountpoint} -u {user} -pw {password}"
-   echo "example: -s /Users -i 192.168.1.1 -p storage/rpool -m /freenas -u root -pw 123"
+   echo "usage:   ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -r {remote path} -m {local mountpoint} -u {user} -p {password}"
+   echo "example: -s /Users -i 192.168.1.1 -r storage/rpool -m /freenas -u root -p 123"
    echo "" # dummy
    exit 1
 fi
@@ -180,8 +180,8 @@ fi
 if [ -z "$user" ]
 then
    echo "" # dummy
-   echo "usage:   ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -p {remote path} -m {local mountpoint} -u {user} -pw {password}"
-   echo "example: -s /Users -i 192.168.1.1 -p storage/rpool -m /freenas -u root -pw 123"
+   echo "usage:   ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -r {remote path} -m {local mountpoint} -u {user} -p {password}"
+   echo "example: -s /Users -i 192.168.1.1 -r storage/rpool -m /freenas -u root -p 123"
    echo "" # dummy
    exit 1
 fi
@@ -190,8 +190,8 @@ fi
 if [ -z "$password" ]
 then
    echo "" # dummy
-   echo "usage:   ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -p {remote path} -m {local mountpoint} -u {user} -pw {password}"
-   echo "example: -s /Users -i 192.168.1.1 -p storage/rpool -m /freenas -u root -pw 123"
+   echo "usage:   ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -r {remote path} -m {local mountpoint} -u {user} -p {password}"
+   echo "example: -s /Users -i 192.168.1.1 -r storage/rpool -m /freenas -u root -p 123"
    echo "" # dummy
    exit 1
 fi
@@ -207,10 +207,10 @@ then
 fi
 
 ##/ umount mountpoint
-umount "$mountpoint"
+umount "$mountpoint" > /dev/null 2>&1
 
 ##/ mount
-mount -t smbfs //"$user":"$password"@"$ip"/"$path" "$/mountpoint"
+mount -t smbfs //"$user":"$password"@"$ip"/"$remote" "$mountpoint"
 if [ $? -eq 0 ]
 then
    : # dummy

@@ -21,7 +21,7 @@ Platform
 
 Usage
 =====
-    # ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -p {remote path} -m {local mountpoint} -u {user} -pw {password}
+   # ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -r {remote path} -m {local mountpoint} -u {user} -p {password}
 
 Screencast
 ==========
