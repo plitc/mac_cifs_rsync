@@ -124,14 +124,14 @@ fi
 ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ###
 
-while getopts ":s:i:p:m:u:pw:" opt; do
+while getopts ":s:i:p:m:u:w:" opt; do
   case "$opt" in
     s) source=$OPTARG ;;
     i) ip=$OPTARG ;;
     p) path=$OPTARG ;;
     m) mountpoint=$OPTARG ;;
     u) user=$OPTARG ;;
-    pw) password=$OPTARG ;;
+    w) password=$OPTARG ;;
   esac
 done
 shift $(( OPTIND - 1 ))
