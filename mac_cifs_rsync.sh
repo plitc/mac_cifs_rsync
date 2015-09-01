@@ -141,7 +141,7 @@ if [ -z "$source" ]
 then
    echo "" # dummy
    echo "usage:   ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -p {remote path} -m {local mountpoint} -u {user} -pw {password}"
-   echo "example: -s /Users -i 192.168.1.1 -p server/rpool -m /freenas -u root -pw 123"
+   echo "example: -s /Users -i 192.168.1.1 -p storage/rpool -m /freenas -u root -pw 123"
    echo "" # dummy
    exit 1
 fi
@@ -151,7 +151,7 @@ if [ -z "$ip" ]
 then
    echo "" # dummy
    echo "usage:   ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -p {remote path} -m {local mountpoint} -u {user} -pw {password}"
-   echo "example: -s /Users -i 192.168.1.1 -p server/rpool -m /freenas -u root -pw 123"
+   echo "example: -s /Users -i 192.168.1.1 -p storage/rpool -m /freenas -u root -pw 123"
    echo "" # dummy
    exit 1
 fi
@@ -161,7 +161,7 @@ if [ -z "$path" ]
 then
    echo "" # dummy
    echo "usage:   ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -p {remote path} -m {local mountpoint} -u {user} -pw {password}"
-   echo "example: -s /Users -i 192.168.1.1 -p server/rpool -m /freenas -u root -pw 123"
+   echo "example: -s /Users -i 192.168.1.1 -p storage/rpool -m /freenas -u root -pw 123"
    echo "" # dummy
    exit 1
 fi
@@ -171,7 +171,7 @@ if [ -z "$mountpoint" ]
 then
    echo "" # dummy
    echo "usage:   ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -p {remote path} -m {local mountpoint} -u {user} -pw {password}"
-   echo "example: -s /Users -i 192.168.1.1 -p server/rpool -m /freenas -u root -pw 123"
+   echo "example: -s /Users -i 192.168.1.1 -p storage/rpool -m /freenas -u root -pw 123"
    echo "" # dummy
    exit 1
 fi
@@ -181,7 +181,7 @@ if [ -z "$user" ]
 then
    echo "" # dummy
    echo "usage:   ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -p {remote path} -m {local mountpoint} -u {user} -pw {password}"
-   echo "example: -s /Users -i 192.168.1.1 -p server/rpool -m /freenas -u root -pw 123"
+   echo "example: -s /Users -i 192.168.1.1 -p storage/rpool -m /freenas -u root -pw 123"
    echo "" # dummy
    exit 1
 fi
@@ -191,7 +191,7 @@ if [ -z "$password" ]
 then
    echo "" # dummy
    echo "usage:   ./mac_cifs_rsync.sh -s {local source} -i {remote ip} -p {remote path} -m {local mountpoint} -u {user} -pw {password}"
-   echo "example: -s /Users -i 192.168.1.1 -p server/rpool -m /freenas -u root -pw 123"
+   echo "example: -s /Users -i 192.168.1.1 -p storage/rpool -m /freenas -u root -pw 123"
    echo "" # dummy
    exit 1
 fi
