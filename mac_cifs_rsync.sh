@@ -232,6 +232,12 @@ echo "" # dummy
 ##/ RUN
 #/ /usr/local/bin/rsync -rltD --progress --no-perms --no-owner --no-group --update --delete "$source"/ "$mountpoint"/
 /usr/local/bin/rsync -rltD --no-perms --no-owner --no-group --update --delete "$source"/ "$mountpoint"/
+if [ $? -eq 0 ]
+then
+   printf "\033[1;31mmac_cifs_rsync finished.\033[0m\n"
+else
+   printf "\033[1;33mmac_cifs_rsync (partial) finished.\033[0m\n"
+fi
 
 ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ###
