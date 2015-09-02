@@ -207,19 +207,19 @@ then
 fi
 
 ##/ umount mountpoint
-umount "$mountpoint" # > /dev/null 2>&1
+umount "$mountpoint" > /dev/null 2>&1
 if [ $? -eq 0 ]
 then
-   printf "\033[1;32mmac_cifs_rsync (old) unmount successful\033[0m\n"
-   echo "" # dummy
+   printf "\033[1;32m1. mac_cifs_rsync (old) unmount successful\033[0m\n"
+   #/ echo "" # dummy
 fi
 
 ##/ mount
 mount -t smbfs //"$user":"$password"@"$ip"/"$remote" "$mountpoint"
 if [ $? -eq 0 ]
 then
-   printf "\033[1;32mmac_cifs_rsync (new) mount successful\033[0m\n"
-   echo "" # dummy
+   printf "\033[1;32m2. mac_cifs_rsync (new) mount successful\033[0m\n"
+   #/ echo "" # dummy
 else
    echo "" # dummy
    echo "[ERROR] can't mount"
