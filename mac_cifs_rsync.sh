@@ -207,7 +207,7 @@ then
 fi
 
 ##/ umount mountpoint
-umount "$mountpoint" > /dev/null 2>&1
+umount "$mountpoint" # > /dev/null 2>&1
 if [ $? -eq 0 ]
 then
    printf "\033[1;32mmac_cifs_rsync (old) unmount successful\033[0m\n"
